@@ -21,14 +21,19 @@ func _ready():
 	ammoQte = maxAmmo
 
 func _physics_process(delta):
+	print(rotation_degrees)
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	if direction.length() > 0:
 		direction = direction.normalized() * (DASH_SPEED if is_dashing else SPEED)
 		velocity.x = direction.x
 		velocity.y = direction.y
+		if not $AnimationPlayer.is_playing():
+			$AnimationPlayer.play("rotate_body")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+		if $AnimationPlayer.is_playing():
+			$AnimationPlayer.stop()
 
 	if Input.is_action_just_pressed("dash") and not is_dashing:
 		is_dashing = true

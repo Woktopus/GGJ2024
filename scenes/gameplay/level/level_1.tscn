@@ -16,8 +16,6 @@ visible = false
 [node name="GameUi" parent="." instance=ExtResource("3_ckmwj")]
 process_mode = 3
 
-[node name="player" parent="." instance=ExtResource("3_c23bk")]
-
 [node name="PlayerTemp" type="Sprite2D" parent="."]
 position = Vector2(191, 95)
 texture = ExtResource("4_jclh5")
@@ -29,6 +27,9 @@ texture = ExtResource("4_jclh5")
 [node name="PlayerTemp3" type="Sprite2D" parent="."]
 position = Vector2(759, 271)
 texture = ExtResource("4_jclh5")
+
+[node name="player" parent="." instance=ExtResource("3_c23bk")]
+position = Vector2(285, 165)
 
 [node name="GunDrop" parent="." instance=ExtResource("5_jugbl")]
 position = Vector2(796, 517)
