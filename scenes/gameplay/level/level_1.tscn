@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmjm8tf7je2fj"]
+[gd_scene load_steps=6 format=3 uid="uid://bmjm8tf7je2fj"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/level/level_1.gd" id="1_gwa3o"]
 [ext_resource type="PackedScene" uid="uid://bjms76k8cp7ue" path="res://scenes/gameplay/player/player.tscn" id="3_c23bk"]
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="3_yfm00"]
 [ext_resource type="Texture2D" uid="uid://cbneotupgw5av" path="res://assets/temp_assets/player_temp.png" id="4_jclh5"]
+[ext_resource type="PackedScene" uid="uid://bnujyrtyamtk7" path="res://scenes/gameProps/gunDrop.tscn" id="5_jugbl"]
 
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_gwa3o")
@@ -24,3 +25,6 @@ texture = ExtResource("4_jclh5")
 [node name="PlayerTemp3" type="Sprite2D" parent="."]
 position = Vector2(759, 271)
 texture = ExtResource("4_jclh5")
+
+[node name="GunDrop" parent="." instance=ExtResource("5_jugbl")]
+position = Vector2(796, 517)
