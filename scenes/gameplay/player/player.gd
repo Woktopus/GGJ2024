@@ -8,6 +8,8 @@ var is_dashing = false
 
 var dash_timer = Timer.new()
 
+var bulletscene = preload("res://scenes/gameplay/bullet/bullet.tscn")
+
 func _ready():
 	add_child(dash_timer)
 	dash_timer.timeout.connect(_on_dash_timer_timeout)
@@ -26,6 +28,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dash") and not is_dashing:
 		is_dashing = true
 		dash_timer.start(DASH_TIME)
+
+	if Input.is_action_just_pressed("attack"):
+		fire()
 	
 	look_at(get_global_mouse_position())
 	
@@ -33,3 +38,10 @@ func _physics_process(delta):
 	
 func _on_dash_timer_timeout():
 	is_dashing = false
+
+func fire():
+	var bullet = bulletscene.instantiate()
+	bullet.position = global_position
+	bullet.rotation_degrees = rotation_degrees
+	bullet.direction = Vector2.RIGHT.rotated(rotation)
+	get_parent().add_child(bullet)
