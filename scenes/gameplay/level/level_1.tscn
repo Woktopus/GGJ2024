@@ -11,8 +11,6 @@ script = ExtResource("1_gwa3o")
 [node name="PauseLayer" parent="." instance=ExtResource("3_yfm00")]
 visible = false
 
-[node name="player" parent="." instance=ExtResource("3_c23bk")]
-
 [node name="PlayerTemp" type="Sprite2D" parent="."]
 position = Vector2(191, 95)
 texture = ExtResource("4_jclh5")
@@ -24,3 +22,6 @@ texture = ExtResource("4_jclh5")
 [node name="PlayerTemp3" type="Sprite2D" parent="."]
 position = Vector2(759, 271)
 texture = ExtResource("4_jclh5")
+
+[node name="player" parent="." instance=ExtResource("3_c23bk")]
+position = Vector2(285, 165)
