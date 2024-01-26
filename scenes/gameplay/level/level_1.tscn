@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmjm8tf7je2fj"]
+
+[ext_resource type="Script" path="res://scenes/gameplay/level/level_1.gd" id="1_gwa3o"]
+[ext_resource type="PackedScene" uid="uid://bjms76k8cp7ue" path="res://scenes/gameplay/player/player.tscn" id="3_c23bk"]
+[ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="3_yfm00"]
+
+[node name="Gameplay" type="Node"]
+script = ExtResource("1_gwa3o")
+
+[node name="PauseLayer" parent="." instance=ExtResource("3_yfm00")]
+visible = false
+
+[node name="player" parent="." instance=ExtResource("3_c23bk")]
