@@ -1,16 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjms76k8cp7ue"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/player/player.gd" id="1_0i32l"]
-[ext_resource type="Texture2D" uid="uid://cbneotupgw5av" path="res://assets/temp_assets/player_temp.png" id="2_g6e6y"]
+[ext_resource type="Texture2D" uid="uid://bkfjrwkitirgi" path="res://assets/sprites/player/clown.png" id="2_ioxd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qfya8"]
-size = Vector2(62, 64)
+size = Vector2(66, 128)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_0i32l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15, -1)
 shape = SubResource("RectangleShape2D_qfya8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_g6e6y")
+rotation = -1.5708
+scale = Vector2(0.0692108, 0.0692108)
+texture = ExtResource("2_ioxd6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
