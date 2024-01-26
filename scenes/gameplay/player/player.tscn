@@ -3,17 +3,18 @@
 [ext_resource type="Script" path="res://scenes/gameplay/player/player.gd" id="1_0i32l"]
 [ext_resource type="Texture2D" uid="uid://bkfjrwkitirgi" path="res://assets/sprites/player/clown.png" id="2_ioxd6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfya8"]
-size = Vector2(66, 128)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gtqq"]
+radius = 35.0
+height = 174.0
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_0i32l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-15, -1)
-shape = SubResource("RectangleShape2D_qfya8")
+shape = SubResource("CapsuleShape2D_2gtqq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(15, 5.32907e-14)
 rotation = -1.5708
 scale = Vector2(0.0692108, 0.0692108)
 texture = ExtResource("2_ioxd6")
