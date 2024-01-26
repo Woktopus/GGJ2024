@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmjm8tf7je2fj"]
+[gd_scene load_steps=7 format=3 uid="uid://bmjm8tf7je2fj"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/level/level_1.gd" id="1_gwa3o"]
 [ext_resource type="PackedScene" uid="uid://bjms76k8cp7ue" path="res://scenes/gameplay/player/player.tscn" id="3_c23bk"]
+[ext_resource type="PackedScene" uid="uid://cvpgdps66fbii" path="res://scenes/UI/gameUi.tscn" id="3_ckmwj"]
 [ext_resource type="PackedScene" uid="uid://barl4q1kugrmm" path="res://scenes/gameplay/pause-layer/pause-layer.tscn" id="3_yfm00"]
 [ext_resource type="Texture2D" uid="uid://cbneotupgw5av" path="res://assets/temp_assets/player_temp.png" id="4_jclh5"]
 [ext_resource type="PackedScene" uid="uid://bnujyrtyamtk7" path="res://scenes/gameProps/gunDrop.tscn" id="5_jugbl"]
@@ -11,6 +12,9 @@ script = ExtResource("1_gwa3o")
 
 [node name="PauseLayer" parent="." instance=ExtResource("3_yfm00")]
 visible = false
+
+[node name="GameUi" parent="." instance=ExtResource("3_ckmwj")]
+process_mode = 3
 
 [node name="player" parent="." instance=ExtResource("3_c23bk")]
 
