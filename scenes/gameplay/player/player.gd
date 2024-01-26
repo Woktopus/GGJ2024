@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 700.0
-const DASH_SPEED = 2000.0
+const SPEED = 300.0
+const DASH_SPEED = 600.0
 const DASH_TIME = 0.2
 
 var is_dashing = false
@@ -16,7 +16,6 @@ func _ready():
 	dash_timer.set_one_shot(true) 
 
 func _physics_process(delta):
-	print(rotation_degrees)
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	if direction.length() > 0:
 		direction = direction.normalized() * (DASH_SPEED if is_dashing else SPEED)

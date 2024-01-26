@@ -43,13 +43,12 @@ animations = [{
 radius = 7.07107
 
 [node name="bullet" type="Area2D"]
-scale = Vector2(5.06, 5.06)
 script = ExtResource("1_un4pr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rvteo")
 autoplay = "default"
-frame_progress = 0.686826
+frame_progress = 0.489348
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_eq67h")
