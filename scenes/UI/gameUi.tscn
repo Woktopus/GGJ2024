@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvpgdps66fbii"]
+
+[ext_resource type="PackedScene" uid="uid://dc17kc2jkgx2y" path="res://scenes/UI/weaponInfoUi.tscn" id="1_u71yl"]
+
+[node name="GameUi" type="CanvasLayer"]
+
+[node name="WeaponInfoUi" parent="." instance=ExtResource("1_u71yl")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -377.0
+offset_top = -361.0
+offset_right = -249.0
+offset_bottom = -201.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8

@@ -10,10 +10,15 @@ var dash_timer = Timer.new()
 
 var bulletscene = preload("res://scenes/gameplay/bullet/bullet.tscn")
 
+# ammo
+const maxAmmo = 12
+var ammoQte = 0
+
 func _ready():
 	add_child(dash_timer)
 	dash_timer.timeout.connect(_on_dash_timer_timeout)
 	dash_timer.set_one_shot(true) 
+	ammoQte = maxAmmo
 
 func _physics_process(delta):
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
@@ -44,8 +49,21 @@ func _on_dash_timer_timeout():
 	is_dashing = false
 
 func fire():
-	var bullet = bulletscene.instantiate()
-	bullet.position = global_position
-	bullet.rotation_degrees = rotation_degrees
-	bullet.direction = Vector2.RIGHT.rotated(rotation)
-	get_parent().add_child(bullet)
+	if ammoQte > 0:
+		ammoQte = ammoQte - 1
+		updateAmmoUI()
+		var bullet = bulletscene.instantiate()
+		bullet.position = global_position
+		bullet.rotation_degrees = rotation_degrees
+		bullet.direction = Vector2.RIGHT.rotated(rotation)
+		get_parent().add_child(bullet)
+	else :
+		print("plus de mun...")
+
+func refullAmmo():
+	ammoQte = maxAmmo
+	updateAmmoUI()
+	print("refull")
+	
+func updateAmmoUI():
+	PlayersInfos.nbAmmo = ammoQte
