@@ -43,6 +43,8 @@ animations = [{
 radius = 7.07107
 
 [node name="bullet" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_un4pr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -52,3 +54,5 @@ frame_progress = 0.489348
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_eq67h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
