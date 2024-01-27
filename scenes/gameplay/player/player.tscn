@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjms76k8cp7ue"]
+[gd_scene load_steps=9 format=3 uid="uid://bjms76k8cp7ue"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/player/player.gd" id="1_0i32l"]
 [ext_resource type="Texture2D" uid="uid://cw27i0hogpo42" path="res://assets/sprites/player/clown3.png" id="2_8qwxg"]
 [ext_resource type="Texture2D" uid="uid://boery8qryeen" path="res://assets/sprites/player/clown2.png" id="3_0d4xp"]
+[ext_resource type="Texture2D" uid="uid://bimicbt2d6l81" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="4_hj5oe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gtqq"]
 radius = 600.0
@@ -71,3 +72,8 @@ texture = ExtResource("3_0d4xp")
 libraries = {
 "": SubResource("AnimationLibrary_q0ywh")
 }
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(31.765, 31.765)
+shadow_enabled = true
+texture = ExtResource("4_hj5oe")
