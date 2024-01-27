@@ -26,6 +26,7 @@ func makepath():
 	nav_agent.target_position = player.global_position
 
 func kill():
+	player.hasKill()
 	# chance to spawn ammo on death 
 	var rng = RandomNumberGenerator.new()
 	var my_random_number = rng.randf_range(0.0, 100.0)
@@ -50,7 +51,6 @@ func kill():
 		newTime = PlayersInfos.funTimerMaxValue
 	print(timeLeft)
 	funTimer.start(newTime)
-	
 	queue_free()
 
 

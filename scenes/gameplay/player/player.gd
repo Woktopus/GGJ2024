@@ -77,3 +77,7 @@ func updateAmmoUI():
 
 func destroyPlayer():
 	set_process_input(false)
+	
+func hasKill():
+	#if $AudioStreamPlayer.playing == false:
+	$AudioStreamPlayer.play()
