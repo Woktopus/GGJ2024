@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 150.0
 const DASH_SPEED = 600.0
 const DASH_TIME = 0.2
-const INVU_TIME = 1
+const INVU_TIME = 0.5
 
 var is_dashing = false
 var dash_timer = Timer.new()
@@ -28,7 +28,7 @@ func _ready():
 	
 	# INVU Frame
 	add_child(invu_timer)
-	dash_timer.timeout.connect(_on_invu_timer_timeout)
+	invu_timer.timeout.connect(_on_invu_timer_timeout)
 	invu_timer.set_one_shot(true) 
 	
 	# AMMO
@@ -66,8 +66,7 @@ func _physics_process(delta):
 func _on_dash_timer_timeout():
 	is_dashing = false
 
-func _on_invu_timer_timeout():
-	is_invu = false
+
 
 func fire():
 	if ammoQte > 0:
@@ -87,7 +86,7 @@ func refullAmmo():
 	updateAmmoUI()
 	print("refull")
 	
-func takeDamage():
+func takeDamage(ennemyVelocity: Vector2):
 	if not is_invu : 
 		#manage invu
 		is_invu = true
@@ -106,12 +105,12 @@ func takeDamage():
 		funTimer.start(newTime)
 		
 		#manage knockback
-		knockback()
+		#knockback(ennemyVelocity)
 		
-func knockback():
-	var knockbackDirection = -velocity.normalized() * KNOCKBACK_POWER
-	velocity = knockbackDirection
-	move_and_slide()
+#func knockback(ennemyVelocity: Vector2):
+	#var knockbackDirection = (ennemyVelocity - velocity).normalized() * KNOCKBACK_POWER
+	#velocity = knockbackDirection
+	#move_and_slide()
 	
 	
 func updateAmmoUI():
@@ -120,6 +119,9 @@ func updateAmmoUI():
 func destroyPlayer():
 	set_process_input(false)
 	
+func _on_invu_timer_timeout():
+	is_invu = false
+		
 func hasKill():
 	#if $AudioStreamPlayer.playing == false:
 	$AudioStreamPlayer.play()

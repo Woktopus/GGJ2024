@@ -59,4 +59,4 @@ func _on_timer_timeout():
 
 func _on_area_2d_body_entered(body):
 	if body.name == "player":
-		body.takeDamage()
+		body.takeDamage(velocity)
