@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 100.0
+const SPEED = 75.0
 
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -14,7 +14,7 @@ func _ready():
 	player = get_parent().get_node("player")
 	$Timer.start()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = dir * SPEED
 

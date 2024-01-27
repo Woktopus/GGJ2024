@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 150.0
 const DASH_SPEED = 600.0
 const DASH_TIME = 0.2
 
@@ -23,6 +23,7 @@ func _ready():
 	ammoQte = maxAmmo
 	
 func _process(delta):
+	$PointLight2D.energy = 0
 	cam.position = position
 
 func _physics_process(delta):
@@ -62,6 +63,7 @@ func fire():
 		bullet.rotation_degrees = rotation_degrees
 		bullet.direction = Vector2.RIGHT.rotated(rotation)
 		get_parent().add_child(bullet)
+		$PointLight2D.energy = 1000
 	else :
 		print("plus de mun...")
 
