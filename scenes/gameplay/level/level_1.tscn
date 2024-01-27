@@ -14048,4 +14048,7 @@ position = Vector2(-0.500001, -1.19209e-06)
 scale = Vector2(12.178, 6.822)
 texture = ExtResource("12_h3anm")
 
+[node name="GunDrop2" parent="." instance=ExtResource("5_jugbl")]
+position = Vector2(117, 254)
+
 [connection signal="timeout" from="FunTimer" to="." method="_on_fun_timer_timeout"]

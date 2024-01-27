@@ -42,7 +42,6 @@ sprite_frames = SubResource("SpriteFrames_sk38y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 0)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_k188c")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]

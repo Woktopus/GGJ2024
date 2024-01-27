@@ -8,6 +8,8 @@ const SPEED = 100.0
 @export var player : CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 
+var lootScene = preload("res://scenes/gameProps/gunDrop.tscn")
+
 func _ready():
 	player = get_parent().get_node("player")
 	$Timer.start()
@@ -24,6 +26,16 @@ func makepath():
 	nav_agent.target_position = player.global_position
 
 func kill():
+	# chance to spawn ammo on death 
+	var rng = RandomNumberGenerator.new()
+	var my_random_number = rng.randf_range(0.0, 100.0)
+	if my_random_number >= 60.0 :
+		var loot  = lootScene.instantiate()
+		loot.position = global_position
+		loot.rotation_degrees = rotation_degrees
+		#loot.direction = Vector2.RIGHT.rotated(rotation)
+		get_parent().add_child(loot)
+		print("drop ammo!")
 	queue_free()
 
 

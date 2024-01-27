@@ -12,6 +12,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
+	
 	if body.name == "player":
 		body.refullAmmo()
 		queue_free()
