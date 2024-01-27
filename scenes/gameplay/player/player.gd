@@ -10,6 +10,8 @@ var dash_timer = Timer.new()
 
 var bulletscene = preload("res://scenes/gameplay/bullet/bullet.tscn")
 
+@onready var cam : Camera2D = get_parent().get_node("Camera2D")
+
 # ammo
 const maxAmmo = 12
 var ammoQte = 0
@@ -19,6 +21,9 @@ func _ready():
 	dash_timer.timeout.connect(_on_dash_timer_timeout)
 	dash_timer.set_one_shot(true) 
 	ammoQte = maxAmmo
+	
+func _process(delta):
+	cam.position = position
 
 func _physics_process(delta):
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
