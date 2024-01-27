@@ -58,7 +58,6 @@ position = Vector2(-100, 0)
 shape = SubResource("CapsuleShape2D_2gtqq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
 zoom = Vector2(8.535, 8.535)
 
 [node name="body" type="Sprite2D" parent="."]
