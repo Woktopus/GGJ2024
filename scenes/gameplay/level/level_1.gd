@@ -11,11 +11,26 @@ func pre_start(params):
 			var val = params[key]
 			printt("", key, val)
 
+	# Param initial de la progress bar 
+	$GameUi/LaughBar/ProgressBar.value = 10
+	$GameUi/LaughBar/ProgressBar.max_value = 10
+	$GameUi/LaughBar/Timer.set_wait_time(10)
+	
+	#$GameUi/LaughBar/Timer.
+
+
 
 # `start()` is called after pre_start and after the graphic transition ends.
 func start():
+	$GameUi/LaughBar/Timer.start()
 	print("gameplay.gd: start() called")
 
 
 func _process(delta):
-	pass
+	$GameUi/LaughBar/ProgressBar.value = $GameUi/LaughBar/Timer.get_time_left()
+	#print(str($GameUi/LaughBar/Timer.get_time_left()))
+	#print(str($GameUi/LaughBar/Timer.is_stopped()))
+	
+	if $GameUi/LaughBar/Timer.get_time_left() <= 0 :
+		$player.destroyPlayer()
+		print("game over")

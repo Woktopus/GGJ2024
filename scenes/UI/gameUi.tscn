@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvpgdps66fbii"]
+[gd_scene load_steps=3 format=3 uid="uid://cvpgdps66fbii"]
 
 [ext_resource type="PackedScene" uid="uid://dc17kc2jkgx2y" path="res://scenes/UI/weaponInfoUi.tscn" id="1_u71yl"]
+[ext_resource type="PackedScene" uid="uid://cbxqe1yjjrh3f" path="res://scenes/UI/laughBar.tscn" id="2_sh1yw"]
 
 [node name="GameUi" type="CanvasLayer"]
 
@@ -18,3 +19,13 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
+
+[node name="LaughBar" parent="." instance=ExtResource("2_sh1yw")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_right = 0.0
+grow_vertical = 1
+size_flags_horizontal = 4
+size_flags_vertical = 0
