@@ -8663,7 +8663,6 @@ visible = false
 
 [node name="GameUi" parent="." instance=ExtResource("3_ckmwj")]
 process_mode = 3
-visible = false
 
 [node name="player" parent="." instance=ExtResource("3_c23bk")]
 position = Vector2(285, 165)
@@ -8691,3 +8690,9 @@ color = Color(0.184314, 0.231373, 0.4, 1)
 energy = 8.24
 range_z_min = -1274
 shadow_enabled = true
+
+[node name="FunTimer" type="Timer" parent="."]
+wait_time = 100.0
+one_shot = true
+
+[connection signal="timeout" from="FunTimer" to="." method="_on_fun_timer_timeout"]

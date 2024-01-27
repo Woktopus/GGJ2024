@@ -69,7 +69,4 @@ func updateAmmoUI():
 	PlayersInfos.nbAmmo = ammoQte
 
 func destroyPlayer():
-	#todo : faire ça proprement
-	$body.visible = false
-	$head.visible = false
-	
+	set_process_input(false)
