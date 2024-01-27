@@ -3,12 +3,16 @@ extends CharacterBody2D
 const SPEED = 300.0
 const DASH_SPEED = 600.0
 const DASH_TIME = 0.2
+const INVU_TIME = 1
 
 var is_dashing = false
-
 var dash_timer = Timer.new()
 
 var bulletscene = preload("res://scenes/gameplay/bullet/bullet.tscn")
+
+var is_invu = false
+var invu_timer = Timer.new() 
+const KNOCKBACK_POWER = 500
 
 @onready var cam : Camera2D = get_parent().get_node("Camera2D")
 
@@ -17,9 +21,17 @@ const maxAmmo = 12
 var ammoQte = 0
 
 func _ready():
+	# DASH
 	add_child(dash_timer)
 	dash_timer.timeout.connect(_on_dash_timer_timeout)
 	dash_timer.set_one_shot(true) 
+	
+	# INVU Frame
+	add_child(invu_timer)
+	dash_timer.timeout.connect(_on_invu_timer_timeout)
+	invu_timer.set_one_shot(true) 
+	
+	# AMMO
 	ammoQte = maxAmmo
 	
 func _process(delta):
@@ -53,6 +65,9 @@ func _physics_process(delta):
 func _on_dash_timer_timeout():
 	is_dashing = false
 
+func _on_invu_timer_timeout():
+	is_invu = false
+
 func fire():
 	if ammoQte > 0:
 		ammoQte = ammoQte - 1
@@ -69,6 +84,33 @@ func refullAmmo():
 	ammoQte = maxAmmo
 	updateAmmoUI()
 	print("refull")
+	
+func takeDamage():
+	if not is_invu : 
+		#manage invu
+		is_invu = true
+		invu_timer.start(INVU_TIME)
+		
+		#manage damage
+		var funTimer = get_parent().get_node("FunTimer")
+		var timeLeft = funTimer.time_left
+		funTimer.stop()
+		print(timeLeft)
+		var newTime = timeLeft - 4.0
+		print(timeLeft)
+		if newTime > PlayersInfos.funTimerMaxValue :
+			newTime = PlayersInfos.funTimerMaxValue
+		print(timeLeft)
+		funTimer.start(newTime)
+		
+		#manage knockback
+		knockback()
+		
+func knockback():
+	var knockbackDirection = -velocity.normalized() * KNOCKBACK_POWER
+	velocity = knockbackDirection
+	move_and_slide()
+	
 	
 func updateAmmoUI():
 	PlayersInfos.nbAmmo = ammoQte

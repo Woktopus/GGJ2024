@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh2j3awco3lp3"]
+[gd_scene load_steps=8 format=3 uid="uid://dh2j3awco3lp3"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/ennemy/ennemy.gd" id="1_7a2i3"]
 [ext_resource type="Texture2D" uid="uid://d2lora4jfuumb" path="res://assets/sprites/tileset/shooter up.png" id="2_ebr52"]
@@ -25,6 +25,10 @@ height = 50.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r7lxf"]
 polygon = PackedVector2Array(-17.3913, -20.2899, -17.3913, 17.3913, -8.69565, 26.087, -2.89855, 28.9855, 2.89855, 26.087, 8.69565, 17.3913, 8.69565, -20.2899, 8.69565, -26.087, 2.89855, -26.087, -5.7971, -28.9855)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qh2od"]
+radius = 17.3913
+height = 52.1739
+
 [node name="ennemy" type="CharacterBody2D"]
 scale = Vector2(0.345, 0.345)
 collision_layer = 2
@@ -47,4 +51,13 @@ shape = SubResource("CapsuleShape2D_k188c")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_r7lxf")
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5.7971, 0)
+shape = SubResource("CapsuleShape2D_qh2od")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

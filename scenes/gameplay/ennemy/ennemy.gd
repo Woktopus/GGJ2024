@@ -40,7 +40,6 @@ func kill():
 	# Add time to timer
 	
 	var funTimer = get_parent().get_node("FunTimer")
-	
 	var timeLeft = funTimer.time_left
 	funTimer.stop()
 	print(timeLeft)
@@ -56,3 +55,8 @@ func kill():
 
 func _on_timer_timeout():
 	makepath()
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == "player":
+		body.takeDamage()
