@@ -1,12 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjms76k8cp7ue"]
+[gd_scene load_steps=9 format=3 uid="uid://bjms76k8cp7ue"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/player/player.gd" id="1_0i32l"]
 [ext_resource type="Texture2D" uid="uid://cw27i0hogpo42" path="res://assets/sprites/player/clown3.png" id="2_8qwxg"]
 [ext_resource type="Texture2D" uid="uid://boery8qryeen" path="res://assets/sprites/player/clown2.png" id="3_0d4xp"]
+[ext_resource type="Texture2D" uid="uid://bimicbt2d6l81" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="4_hj5oe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gtqq"]
 radius = 600.0
 height = 2400.0
+
+[sub_resource type="Animation" id="Animation_ralgd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.07177),
+"update": 0,
+"values": [-1.5708]
+}
 
 [sub_resource type="Animation" id="Animation_2qd25"]
 resource_name = "rotate_body"
@@ -23,21 +39,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1.07177),
 "update": 0,
 "values": [0.0, -1.5708, -1.39626, -1.74533, -1.5708]
-}
-
-[sub_resource type="Animation" id="Animation_ralgd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("body:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1.07177),
-"update": 0,
-"values": [-1.5708]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q0ywh"]
@@ -71,3 +72,8 @@ texture = ExtResource("3_0d4xp")
 libraries = {
 "": SubResource("AnimationLibrary_q0ywh")
 }
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(31.765, 31.765)
+shadow_enabled = true
+texture = ExtResource("4_hj5oe")
