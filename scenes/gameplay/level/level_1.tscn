@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bmjm8tf7je2fj"]
+[gd_scene load_steps=30 format=3 uid="uid://bmjm8tf7je2fj"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/level/level_1.gd" id="1_gwa3o"]
 [ext_resource type="PackedScene" uid="uid://bjms76k8cp7ue" path="res://scenes/gameplay/player/player.tscn" id="3_c23bk"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bimicbt2d6l81" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="8_ai8eg"]
 [ext_resource type="PackedScene" uid="uid://dh2j3awco3lp3" path="res://scenes/gameplay/ennemy/ennemy.tscn" id="9_iw4qx"]
 [ext_resource type="Texture2D" uid="uid://vl2blxjit1ko" path="res://assets/temp_assets/2d_lights_and_shadows_neutral_point_light.webp" id="10_1lrmq"]
+[ext_resource type="Shader" path="res://scenes/gameplay/level/level_1.gdshader" id="11_wbkv2"]
+[ext_resource type="Texture2D" uid="uid://cbneotupgw5av" path="res://assets/temp_assets/player_temp.png" id="12_h3anm"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xcjtm"]
 
@@ -13962,6 +13964,10 @@ source_geometry_mode = 1
 source_geometry_group_name = &"navigation"
 agent_radius = 11.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cnags"]
+shader = ExtResource("11_wbkv2")
+shader_parameter/fisheye_strength = 1.0
+
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_gwa3o")
 
@@ -14034,5 +14040,14 @@ shadow_enabled = true
 position = Vector2(497, 87)
 shadow_enabled = true
 texture = ExtResource("10_1lrmq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(9.255, 9.255)
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+material = SubResource("ShaderMaterial_cnags")
+position = Vector2(-0.500001, -1.19209e-06)
+scale = Vector2(12.178, 6.822)
+texture = ExtResource("12_h3anm")
 
 [connection signal="timeout" from="FunTimer" to="." method="_on_fun_timer_timeout"]
