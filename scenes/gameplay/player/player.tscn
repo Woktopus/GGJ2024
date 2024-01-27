@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scenes/gameplay/player/player.gd" id="1_0i32l"]
 [ext_resource type="Texture2D" uid="uid://cw27i0hogpo42" path="res://assets/sprites/player/clown3.png" id="2_8qwxg"]
 [ext_resource type="Texture2D" uid="uid://boery8qryeen" path="res://assets/sprites/player/clown2.png" id="3_0d4xp"]
-[ext_resource type="Texture2D" uid="uid://bimicbt2d6l81" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="4_hj5oe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gtqq"]
 radius = 600.0
@@ -47,6 +46,9 @@ _data = {
 "rotate_body": SubResource("Animation_2qd25")
 }
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g0mv3"]
+polygon = PackedVector2Array(-700, -900, -500, -800, -500, -700, -700, -500, -500, -300, -600, 100, -400, 300, -500, 700, -600, 1000, -200, 1200, 100, 1200, 400, 800, 200, 700, 400, 500, 500, 200, 500, 100, 600, -300, 400, -600, 200, -700, 300, -900, 100, -1300, -200, -1200, -700, -1000)
+
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(0.01, 0.01)
 collision_layer = 2
@@ -75,7 +77,5 @@ libraries = {
 "": SubResource("AnimationLibrary_q0ywh")
 }
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-scale = Vector2(31.765, 31.765)
-shadow_enabled = true
-texture = ExtResource("4_hj5oe")
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_g0mv3")
