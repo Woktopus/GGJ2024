@@ -15,12 +15,6 @@ func pre_start(params):
 	$GameUi/LaughBar/ProgressBar.value = PlayersInfos.funTimerMaxValue
 	$GameUi/LaughBar/ProgressBar.max_value = PlayersInfos.funTimerMaxValue
 	$FunTimer.set_wait_time(PlayersInfos.funTimerMaxValue)
-	
-	#$GameUi/LaughBar/Timer.set_wait_time(10)
-	
-	#$GameUi/LaughBar/Timer.
-
-
 
 # `start()` is called after pre_start and after the graphic transition ends.
 func start():

@@ -36,6 +36,21 @@ func kill():
 		#loot.direction = Vector2.RIGHT.rotated(rotation)
 		get_parent().add_child(loot)
 		print("drop ammo!")
+	
+	# Add time to timer
+	
+	var funTimer = get_parent().get_node("FunTimer")
+	
+	var timeLeft = funTimer.time_left
+	funTimer.stop()
+	print(timeLeft)
+	var newTime = timeLeft + 3.0
+	print(timeLeft)
+	if newTime > PlayersInfos.funTimerMaxValue :
+		newTime = PlayersInfos.funTimerMaxValue
+	print(timeLeft)
+	funTimer.start(newTime)
+	
 	queue_free()
 
 
