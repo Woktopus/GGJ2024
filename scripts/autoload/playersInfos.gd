@@ -2,6 +2,7 @@ class_name playerInfos
 extends Node
 
 var nbAmmo = 12
+var funTimerMaxValue = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

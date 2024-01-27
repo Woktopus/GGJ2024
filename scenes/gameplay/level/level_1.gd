@@ -12,9 +12,9 @@ func pre_start(params):
 			printt("", key, val)
 
 	# Param initial de la progress bar 
-	$GameUi/LaughBar/ProgressBar.value = 10
-	$GameUi/LaughBar/ProgressBar.max_value = 10
-	$FunTimer.set_wait_time(10)
+	$GameUi/LaughBar/ProgressBar.value = PlayersInfos.funTimerMaxValue
+	$GameUi/LaughBar/ProgressBar.max_value = PlayersInfos.funTimerMaxValue
+	$FunTimer.set_wait_time(PlayersInfos.funTimerMaxValue)
 	
 	#$GameUi/LaughBar/Timer.set_wait_time(10)
 	
@@ -39,5 +39,7 @@ func _process(delta):
 func _on_fun_timer_timeout():
 	#$player.destroyPlayer()
 	print("timeout")
-	set_process_input(false)
+	var params = {}
+	Game.change_scene_to_file("res://scenes/menu/GameOver.tscn", params)
+	#set_process_input(false)
 	#player.set_process_input(false)

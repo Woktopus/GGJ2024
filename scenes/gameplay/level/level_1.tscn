@@ -13976,7 +13976,6 @@ visible = false
 
 [node name="GameUi" parent="." instance=ExtResource("3_ckmwj")]
 process_mode = 3
-visible = false
 
 [node name="GunDrop" parent="." instance=ExtResource("5_jugbl")]
 visible = false
@@ -13996,7 +13995,6 @@ layer_2/name = "deco"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 position = Vector2(97, 186)
 scale = Vector2(1.14, 1.14)
 color = Color(0.870588, 0.913725, 0.858824, 1)
