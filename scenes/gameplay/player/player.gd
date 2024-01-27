@@ -67,3 +67,6 @@ func refullAmmo():
 	
 func updateAmmoUI():
 	PlayersInfos.nbAmmo = ammoQte
+
+func destroyPlayer():
+	set_process_input(false)

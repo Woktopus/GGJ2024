@@ -8672,7 +8672,6 @@ visible = false
 
 [node name="GameUi" parent="." instance=ExtResource("3_ckmwj")]
 process_mode = 3
-visible = false
 
 [node name="player" parent="." instance=ExtResource("3_c23bk")]
 position = Vector2(285, 165)
@@ -8733,3 +8732,9 @@ polygon = PackedVector2Array(451, 131, 449, 159, 460, 159, 464, 222, 356, 223, 3
 zoom = Vector2(12.1, 12.1)
 script = ExtResource("10_1buhq")
 player = NodePath("../player")
+
+[node name="FunTimer" type="Timer" parent="."]
+wait_time = 100.0
+one_shot = true
+
+[connection signal="timeout" from="FunTimer" to="." method="_on_fun_timer_timeout"]
