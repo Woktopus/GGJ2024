@@ -6,6 +6,7 @@ const SPEED = 100.0
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @export var player : CharacterBody2D
+@onready var sprite = $AnimatedSprite2D
 
 func _ready():
 	player = get_parent().get_node("player")
@@ -16,11 +17,10 @@ func _physics_process(delta):
 	velocity = dir * SPEED
 
 	#position += (player.position - position) / 50
-	#look_at(player.global_position)
+	sprite.look_at(player.global_position)
 	move_and_slide()
 	
 func makepath():
-	print(player.global_position)
 	nav_agent.target_position = player.global_position
 
 func kill():
