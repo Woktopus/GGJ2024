@@ -39,5 +39,7 @@ func _process(delta):
 func _on_fun_timer_timeout():
 	#$player.destroyPlayer()
 	print("timeout")
-	set_process_input(false)
+	var params = {}
+	Game.change_scene_to_file("res://scenes/menu/GameOver.tscn", params)
+	#set_process_input(false)
 	#player.set_process_input(false)
