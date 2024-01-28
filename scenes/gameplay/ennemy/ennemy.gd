@@ -6,30 +6,49 @@ const SPEED = 75.0
 const MAX_HEALTH = 2
 
 
+
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @export var player : CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
+
+@export var path : Path2D
+@export var playerAreaDetection: Area2D
 
 var lootScene = preload("res://scenes/gameProps/gunDrop.tscn")
 var deadBodyScene = preload("res://scenes/gameProps/deadBody.tscn")
 var bloodScene = preload("res://scenes/gameProps/blood.tscn")
 var healthPoint : int 
 
+var actual_point = 1
+var isPlayerDetected = false
+var point_actualised=true
+
+var moveTo = Vector2(0,0)
+
 func _ready():
 	player = get_parent().get_node("player")
 	$Timer.start()
 	healthPoint = MAX_HEALTH
+	nav_agent.target_reached.connect(_on_navigation_finished)
+	playerAreaDetection.body_entered.connect(_on_body_enter_area)
 
 func _physics_process(_delta):
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = dir * SPEED
-
-	#position += (player.position - position) / 50
 	sprite.look_at(player.global_position)
 	move_and_slide()
 	
 func makepath():
-	nav_agent.target_position = player.global_position
+	if isPlayerDetected == false && point_actualised:
+		var pos = path.curve.get_point_position(actual_point)
+		pos.x = pos.x + path.position.x
+		pos.y = pos.y + path.position.y
+		nav_agent.target_position = pos
+		print("navigate to : " + str(nav_agent.target_position))
+		point_actualised=false
+	else:
+		if isPlayerDetected:
+			nav_agent.target_position = player.global_position
 
 func kill():
 	var rng = RandomNumberGenerator.new()
@@ -87,3 +106,16 @@ func _on_timer_timeout():
 func _on_area_2d_body_entered(body):
 	if body.name == "player":
 		body.takeDamage(velocity)
+		
+func _on_navigation_finished():
+	if isPlayerDetected == false && point_actualised == false:
+		#moveTo = Vector2(0,400)
+		#point_actualised = true
+		actual_point+=1
+		actual_point = actual_point % path.curve.point_count
+		point_actualised = true
+
+func _on_body_enter_area(body):
+	print(body.name + "entered")
+	if body.name == "player":
+		isPlayerDetected = true

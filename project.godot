@@ -31,10 +31,6 @@ PlayersInfos="*res://scripts/autoload/playersInfos.gd"
 
 property_name=1
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/mode=2
