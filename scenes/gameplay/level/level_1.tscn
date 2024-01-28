@@ -14113,6 +14113,7 @@ path = NodePath("../Path2D2")
 playerAreaDetection = NodePath("../areaRoom2")
 
 [node name="Path2D2" type="Path2D" parent="."]
+visible = false
 position = Vector2(227, 259)
 curve = SubResource("Curve2D_pemk7")
 

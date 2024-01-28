@@ -4,7 +4,7 @@ class_name Ennemy
 
 const SPEED = 75.0
 const MAX_HEALTH = 2
-const INVU_TIME = 0.6
+const INVU_TIME = 0.4
 
 var bulletscene = preload("res://scenes/gameplay/bullet_ennemy/bullet_ennemy.tscn")
 
