@@ -10,6 +10,7 @@ const SPEED = 75.0
 @onready var sprite = $AnimatedSprite2D
 
 var lootScene = preload("res://scenes/gameProps/gunDrop.tscn")
+var deadBodyScene = preload("res://scenes/gameProps/deadBody.tscn")
 
 func _ready():
 	player = get_parent().get_node("player")
@@ -28,8 +29,17 @@ func makepath():
 
 func kill():
 	player.hasKill()
-	# chance to spawn ammo on death 
+	# spawn dead body on death 
 	var rng = RandomNumberGenerator.new()
+	var my_random_radius = rng.randf_range(0.0, 360.0)
+	var deadBody = deadBodyScene.instantiate()
+	deadBody.position = global_position
+	deadBody.set_rotation(my_random_radius)
+	#deadBody.
+	get_parent().add_child(deadBody)
+	print("print dead body")
+	
+	# chance to spawn ammo on death 
 	var my_random_number = rng.randf_range(0.0, 100.0)
 	if my_random_number >= 60.0 :
 		var loot  = lootScene.instantiate()
