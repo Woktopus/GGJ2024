@@ -9,7 +9,6 @@ var is_dashing = false
 var dash_timer = Timer.new()
 
 var bulletscene = preload("res://scenes/gameplay/bullet/bullet.tscn")
-var kickScene = preload("res://scenes/gameplay/bullet/kick.tscn")
 
 var is_invu = false
 var invu_timer = Timer.new() 
@@ -82,15 +81,12 @@ func fire():
 	else :
 		print("plus de mun...")
 
-func kick():
-	pass
-
 func refullAmmo():
 	ammoQte = maxAmmo
 	updateAmmoUI()
 	print("refull")
 	
-func takeDamage(ennemyVelocity: Vector2):
+func takeDamage():
 	if not is_invu : 
 		#manage invu
 		is_invu = true
