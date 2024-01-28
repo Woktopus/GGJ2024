@@ -14054,4 +14054,13 @@ autoplay = true
 [node name="AccesCard" parent="." instance=ExtResource("14_7xbmv")]
 position = Vector2(498, 1)
 
+[node name="AccesCard2" parent="." instance=ExtResource("14_7xbmv")]
+position = Vector2(438, 268)
+
+[node name="AccesCard3" parent="." instance=ExtResource("14_7xbmv")]
+position = Vector2(34, -5)
+
+[node name="AccesCard4" parent="." instance=ExtResource("14_7xbmv")]
+position = Vector2(-172, -8)
+
 [connection signal="timeout" from="FunTimer" to="." method="_on_fun_timer_timeout"]
