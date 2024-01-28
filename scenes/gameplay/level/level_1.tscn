@@ -13,7 +13,7 @@
 [ext_resource type="Shader" path="res://scenes/gameplay/level/level_1.gdshader" id="11_wbkv2"]
 [ext_resource type="Texture2D" uid="uid://cbneotupgw5av" path="res://assets/temp_assets/player_temp.png" id="12_h3anm"]
 [ext_resource type="AudioStream" uid="uid://dtulht4grwft4" path="res://assets/sound/80s-retro-synthwave-186631.mp3" id="13_nhi8n"]
-[ext_resource type="PackedScene" path="res://scenes/gameProps/AccesCard.tscn" id="14_7xbmv"]
+[ext_resource type="PackedScene" uid="uid://dw0oonvocy1x7" path="res://scenes/gameProps/AccesCard.tscn" id="14_7xbmv"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xcjtm"]
 

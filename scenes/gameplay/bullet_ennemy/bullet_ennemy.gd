@@ -12,3 +12,7 @@ func _on_body_entered(body):
 	if body.name == "player":
 		queue_free()
 		body.takeDamage()
+	else :
+		if not "ennemy" in body.name:
+			queue_free()
+			

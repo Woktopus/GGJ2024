@@ -9,6 +9,8 @@ size = Vector2(63, 23)
 [node name="Kick" type="Area2D"]
 z_index = 5
 scale = Vector2(0.2, 0.2)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_s1i8i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -21,5 +23,9 @@ position = Vector2(50, 10)
 shape = SubResource("RectangleShape2D_tvyas")
 
 [node name="interneKickStarter" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="interneKickStarter" to="." method="_on_kick_timer_timeout"]
