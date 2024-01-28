@@ -11,6 +11,8 @@ var dash_timer = Timer.new()
 
 var bulletscene = preload("res://scenes/gameplay/bullet/bullet.tscn")
 
+var kickScene = preload("res://scenes/gameplay/bullet/kick.tscn")
+
 var is_invu = false
 var invu_timer = Timer.new() 
 const KNOCKBACK_POWER = 500
@@ -103,7 +105,7 @@ func kick():
 		kick.position = global_position
 		kick.rotation_degrees = rotation_degrees
 		#kick.direction = Vector2.RIGHT.rotated(rotation)
-		add_child(kick)
+		get_parent().add_child(kick)
 	else :
 		print("can't kick")
 

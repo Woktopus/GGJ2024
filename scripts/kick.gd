@@ -11,7 +11,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position = get_parent().position
+	var player = get_parent().get_node("player")
+	position = player.position
 
 
 
