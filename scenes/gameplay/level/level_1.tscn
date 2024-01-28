@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bmjm8tf7je2fj"]
+[gd_scene load_steps=36 format=3 uid="uid://bmjm8tf7je2fj"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/level/level_1.gd" id="1_gwa3o"]
 [ext_resource type="PackedScene" uid="uid://bjms76k8cp7ue" path="res://scenes/gameplay/player/player.tscn" id="3_c23bk"]
@@ -13979,6 +13979,15 @@ point_count = 8
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1dw6q"]
 size = Vector2(181, 187)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xy3y1"]
+size = Vector2(223, 151)
+
+[sub_resource type="Curve2D" id="Curve2D_pemk7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 164, 10, 0, 0, 0, 0, 130, -113, 0, 0, 0, 0, -2, -108, 0, 0, 0, 0, -1, -1)
+}
+point_count = 5
+
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_gwa3o")
 
@@ -14009,12 +14018,6 @@ scale = Vector2(1.14, 1.14)
 color = Color(0.870588, 0.913725, 0.858824, 1)
 shadow_enabled = true
 texture = ExtResource("8_ai8eg")
-
-[node name="ennemy" parent="." node_paths=PackedStringArray("player", "path", "playerAreaDetection") instance=ExtResource("9_iw4qx")]
-position = Vector2(43, 222)
-player = NodePath("../player")
-path = NodePath("../Path2D")
-playerAreaDetection = NodePath("../Area2D")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
@@ -14076,5 +14079,41 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(92.5, 188.5)
 shape = SubResource("RectangleShape2D_1dw6q")
+
+[node name="ennemy" parent="." node_paths=PackedStringArray("player", "path", "playerAreaDetection") instance=ExtResource("9_iw4qx")]
+position = Vector2(43, 222)
+player = NodePath("../player")
+path = NodePath("../Path2D")
+playerAreaDetection = NodePath("../Area2D")
+
+[node name="ennemy2" parent="." node_paths=PackedStringArray("player", "playerAreaDetection") instance=ExtResource("9_iw4qx")]
+position = Vector2(94, 262)
+player = NodePath("../player")
+playerAreaDetection = NodePath("../Area2D")
+isMoving = false
+
+[node name="areaRoom2" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaRoom2"]
+position = Vector2(302.5, 203.5)
+shape = SubResource("RectangleShape2D_xy3y1")
+
+[node name="ennemy1_room2" parent="." node_paths=PackedStringArray("player", "playerAreaDetection") instance=ExtResource("9_iw4qx")]
+position = Vector2(397, 150)
+player = NodePath("../player")
+playerAreaDetection = NodePath("../areaRoom2")
+isMoving = false
+
+[node name="ennemy2_room2" parent="." node_paths=PackedStringArray("player", "path", "playerAreaDetection") instance=ExtResource("9_iw4qx")]
+position = Vector2(227, 260)
+player = NodePath("../player")
+path = NodePath("../Path2D2")
+playerAreaDetection = NodePath("../areaRoom2")
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(227, 259)
+curve = SubResource("Curve2D_pemk7")
 
 [connection signal="timeout" from="FunTimer" to="." method="_on_fun_timer_timeout"]

@@ -5,7 +5,7 @@ class_name Ennemy
 const SPEED = 75.0
 const MAX_HEALTH = 2
 
-
+var bulletscene = preload("res://scenes/gameplay/bullet_ennemy/bullet_ennemy.tscn")
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @export var player : CharacterBody2D
@@ -14,6 +14,8 @@ const MAX_HEALTH = 2
 @export var path : Path2D
 @export var playerAreaDetection: Area2D
 
+@export var isMoving  = true as bool
+
 var lootScene = preload("res://scenes/gameProps/gunDrop.tscn")
 var deadBodyScene = preload("res://scenes/gameProps/deadBody.tscn")
 var bloodScene = preload("res://scenes/gameProps/blood.tscn")
@@ -21,7 +23,7 @@ var healthPoint : int
 
 var actual_point = 1
 var isPlayerDetected = false
-var point_actualised=true
+var point_actualised = true
 
 var moveTo = Vector2(0,0)
 
@@ -35,11 +37,14 @@ func _ready():
 func _physics_process(_delta):
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = dir * SPEED
-	sprite.look_at(player.global_position)
-	move_and_slide()
+	if(isPlayerDetected):
+		sprite.look_at(player.global_position)
+	
+	if isMoving:
+		move_and_slide()
 	
 func makepath():
-	if isPlayerDetected == false && point_actualised:
+	if isPlayerDetected == false && point_actualised && path:
 		var pos = path.curve.get_point_position(actual_point)
 		pos.x = pos.x + path.position.x
 		pos.y = pos.y + path.position.y
@@ -105,7 +110,7 @@ func _on_timer_timeout():
 
 func _on_area_2d_body_entered(body):
 	if body.name == "player":
-		body.takeDamage(velocity)
+		body.takeDamage()
 		
 func _on_navigation_finished():
 	if isPlayerDetected == false && point_actualised == false:
@@ -119,3 +124,11 @@ func _on_body_enter_area(body):
 	print(body.name + "entered")
 	if body.name == "player":
 		isPlayerDetected = true
+
+func shot_player():
+	if isMoving == false && isPlayerDetected: #donc c'est un shooter
+		var bullet = bulletscene.instantiate()
+		bullet.position = global_position
+		bullet.rotation_degrees = sprite.rotation_degrees
+		bullet.direction = Vector2.RIGHT.rotated(sprite.rotation)
+		get_parent().add_child(bullet)
