@@ -112,6 +112,8 @@ func takeDamage(ennemyVelocity: Vector2):
 	#velocity = knockbackDirection
 	#move_and_slide()
 	
+func getAccesCard():
+	get_parent().increase_keypass_found()
 	
 func updateAmmoUI():
 	PlayersInfos.nbAmmo = ammoQte

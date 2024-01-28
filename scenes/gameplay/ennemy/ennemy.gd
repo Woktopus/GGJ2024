@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Ennemy
 
 
 const SPEED = 75.0
@@ -50,8 +51,12 @@ func kill():
 		newTime = PlayersInfos.funTimerMaxValue
 	print(timeLeft)
 	funTimer.start(newTime)
+	
+	# increase ennemies death counter
+	get_parent().increase_enemies_kill()
+	
+	# free current ennemie
 	queue_free()
-
 
 func _on_timer_timeout():
 	makepath()

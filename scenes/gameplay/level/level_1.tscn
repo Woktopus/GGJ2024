@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bmjm8tf7je2fj"]
+[gd_scene load_steps=32 format=3 uid="uid://bmjm8tf7je2fj"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/level/level_1.gd" id="1_gwa3o"]
 [ext_resource type="PackedScene" uid="uid://bjms76k8cp7ue" path="res://scenes/gameplay/player/player.tscn" id="3_c23bk"]
@@ -13,6 +13,7 @@
 [ext_resource type="Shader" path="res://scenes/gameplay/level/level_1.gdshader" id="11_wbkv2"]
 [ext_resource type="Texture2D" uid="uid://cbneotupgw5av" path="res://assets/temp_assets/player_temp.png" id="12_h3anm"]
 [ext_resource type="AudioStream" uid="uid://dtulht4grwft4" path="res://assets/sound/80s-retro-synthwave-186631.mp3" id="13_nhi8n"]
+[ext_resource type="PackedScene" uid="uid://dw0oonvocy1x7" path="res://scenes/gameProps/AccesCard.tscn" id="14_7xbmv"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xcjtm"]
 
@@ -14049,5 +14050,8 @@ texture = ExtResource("12_h3anm")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_nhi8n")
 autoplay = true
+
+[node name="AccesCard" parent="." instance=ExtResource("14_7xbmv")]
+position = Vector2(498, 1)
 
 [connection signal="timeout" from="FunTimer" to="." method="_on_fun_timer_timeout"]
