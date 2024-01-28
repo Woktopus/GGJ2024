@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bmjm8tf7je2fj"]
+[gd_scene load_steps=34 format=3 uid="uid://bmjm8tf7je2fj"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/level/level_1.gd" id="1_gwa3o"]
 [ext_resource type="PackedScene" uid="uid://bjms76k8cp7ue" path="res://scenes/gameplay/player/player.tscn" id="3_c23bk"]
@@ -13,7 +13,7 @@
 [ext_resource type="Shader" path="res://scenes/gameplay/level/level_1.gdshader" id="11_wbkv2"]
 [ext_resource type="Texture2D" uid="uid://cbneotupgw5av" path="res://assets/temp_assets/player_temp.png" id="12_h3anm"]
 [ext_resource type="AudioStream" uid="uid://dtulht4grwft4" path="res://assets/sound/80s-retro-synthwave-186631.mp3" id="13_nhi8n"]
-[ext_resource type="PackedScene" uid="uid://dw0oonvocy1x7" path="res://scenes/gameProps/AccesCard.tscn" id="14_7xbmv"]
+[ext_resource type="PackedScene" path="res://scenes/gameProps/AccesCard.tscn" id="14_7xbmv"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xcjtm"]
 
@@ -13970,15 +13970,27 @@ agent_radius = 11.0
 shader = ExtResource("11_wbkv2")
 shader_parameter/fisheye_strength = 1.0
 
+[sub_resource type="Curve2D" id="Curve2D_ksvbk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 2, 0, 0, 0, 0, 128, 50, 0, 0, 0, 0, 113, -34, 0, 0, 0, 0, 70, -43, 0, 0, 0, 0, 74, -109, 0, 0, 0, 0, 5, -101, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dw6q"]
+size = Vector2(181, 187)
+
 [node name="Gameplay" type="Node"]
 script = ExtResource("1_gwa3o")
 
 [node name="PauseLayer" parent="." instance=ExtResource("3_yfm00")]
+visible = false
 
 [node name="GameUi" parent="." instance=ExtResource("3_ckmwj")]
 process_mode = 3
+visible = false
 
 [node name="GunDrop" parent="." instance=ExtResource("5_jugbl")]
+visible = false
 position = Vector2(564, 240)
 scale = Vector2(0.305, 0.305)
 
@@ -13995,29 +14007,21 @@ layer_2/name = "deco"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(97, 186)
 scale = Vector2(1.14, 1.14)
 color = Color(0.870588, 0.913725, 0.858824, 1)
 shadow_enabled = true
 texture = ExtResource("8_ai8eg")
 
-[node name="ennemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_iw4qx")]
-position = Vector2(199, 270)
+[node name="ennemy" parent="." node_paths=PackedStringArray("player", "path", "playerAreaDetection") instance=ExtResource("9_iw4qx")]
+position = Vector2(43, 222)
 player = NodePath("../player")
-
-[node name="ennemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_iw4qx")]
-position = Vector2(472, 200)
-player = NodePath("../player")
-
-[node name="ennemy3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_iw4qx")]
-position = Vector2(120, 24)
-player = NodePath("../player")
-
-[node name="ennemy4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_iw4qx")]
-position = Vector2(392, 144)
-player = NodePath("../player")
+path = NodePath("../Path2D")
+playerAreaDetection = NodePath("../Area2D")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-1, 0)
 navigation_polygon = SubResource("NavigationPolygon_hcsqm")
 navigation_layers = 3
@@ -14034,11 +14038,13 @@ rotation = 5.24122
 shadow_enabled = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(497, 87)
 shadow_enabled = true
 texture = ExtResource("10_1lrmq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 zoom = Vector2(9.255, 9.255)
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
@@ -14062,5 +14068,18 @@ position = Vector2(34, -5)
 
 [node name="AccesCard4" parent="." instance=ExtResource("14_7xbmv")]
 position = Vector2(-172, -8)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(43, 215.83)
+scale = Vector2(0.929688, 0.943396)
+curve = SubResource("Curve2D_ksvbk")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(92.5, 188.5)
+shape = SubResource("RectangleShape2D_1dw6q")
 
 [connection signal="timeout" from="FunTimer" to="." method="_on_fun_timer_timeout"]

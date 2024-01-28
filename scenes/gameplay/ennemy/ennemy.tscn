@@ -37,6 +37,9 @@ collision_mask = 2
 script = ExtResource("1_7a2i3")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 25.0
+path_max_distance = 200.0
+debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.274
@@ -45,6 +48,7 @@ wait_time = 0.274
 z_index = 5
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_sk38y")
+frame_progress = 0.329723
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 0)
