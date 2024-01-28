@@ -30,6 +30,7 @@ radius = 17.3913
 height = 52.1739
 
 [node name="ennemy" type="CharacterBody2D"]
+z_index = 5
 scale = Vector2(0.345, 0.345)
 collision_layer = 2
 collision_mask = 2
