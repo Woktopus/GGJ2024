@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://2muex3yslqv8"]
+[gd_scene load_steps=4 format=3 uid="uid://2muex3yslqv8"]
 
+[ext_resource type="Script" path="res://scripts/kick.gd" id="1_s1i8i"]
 [ext_resource type="Texture2D" uid="uid://by40qdk4huhuh" path="res://assets/sprites/bullet/kick.png" id="1_vqopo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvyas"]
@@ -7,12 +8,18 @@ size = Vector2(63, 23)
 
 [node name="Kick" type="Area2D"]
 z_index = 5
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_s1i8i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
+position = Vector2(50, 0)
 texture = ExtResource("1_vqopo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 7.5)
+position = Vector2(50, 10)
 shape = SubResource("RectangleShape2D_tvyas")
+
+[node name="interneKickStarter" type="Timer" parent="."]
+
+[connection signal="timeout" from="interneKickStarter" to="." method="_on_kick_timer_timeout"]

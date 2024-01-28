@@ -4,6 +4,7 @@ const SPEED = 150.0
 const DASH_SPEED = 600.0
 const DASH_TIME = 0.2
 const INVU_TIME = 0.5
+const KICK_CD_TIME = 1.5
 
 var is_dashing = false
 var dash_timer = Timer.new()
@@ -14,6 +15,11 @@ var kickScene = preload("res://scenes/gameplay/bullet/kick.tscn")
 var is_invu = false
 var invu_timer = Timer.new() 
 const KNOCKBACK_POWER = 500
+
+var kickCd = Timer.new()
+var is_kicking = false
+
+
 
 @onready var cam : Camera2D = get_parent().get_node("Camera2D")
 
@@ -30,7 +36,12 @@ func _ready():
 	# INVU Frame
 	add_child(invu_timer)
 	invu_timer.timeout.connect(_on_invu_timer_timeout)
-	invu_timer.set_one_shot(true) 
+	invu_timer.set_one_shot(true)
+	
+	# KICK TIMER CD
+	add_child(kickCd)
+	kickCd.timeout.connect(_on_kickCd_timer_timeout)
+	kickCd.set_one_shot(true)
 	
 	# AMMO
 	ammoQte = maxAmmo
@@ -59,6 +70,8 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("attack"):
 		fire()
+	if Input.is_action_just_pressed("kick"):
+		kick()
 	
 	look_at(get_global_mouse_position())
 	
@@ -83,7 +96,17 @@ func fire():
 		print("plus de mun...")
 
 func kick():
-	pass
+	print("kick")
+	if not is_kicking :
+		is_kicking = true
+		kickCd.start(KICK_CD_TIME)
+		var kick = kickScene.instantiate()
+		kick.position = global_position
+		kick.rotation_degrees = rotation_degrees
+		#kick.direction = Vector2.RIGHT.rotated(rotation)
+		add_child(kick)
+	else :
+		print("can't kick")
 
 func refullAmmo():
 	ammoQte = maxAmmo
@@ -128,6 +151,9 @@ func destroyPlayer():
 func _on_invu_timer_timeout():
 	is_invu = false
 		
+func _on_kickCd_timer_timeout():
+	is_kicking = false
+	
 func hasKill():
 	#if $AudioStreamPlayer.playing == false:
 	$AudioStreamPlayer.play()

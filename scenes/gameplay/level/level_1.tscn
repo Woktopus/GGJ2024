@@ -13,7 +13,7 @@
 [ext_resource type="Shader" path="res://scenes/gameplay/level/level_1.gdshader" id="11_wbkv2"]
 [ext_resource type="Texture2D" uid="uid://cbneotupgw5av" path="res://assets/temp_assets/player_temp.png" id="12_h3anm"]
 [ext_resource type="AudioStream" uid="uid://dtulht4grwft4" path="res://assets/sound/80s-retro-synthwave-186631.mp3" id="13_nhi8n"]
-[ext_resource type="PackedScene" path="res://scenes/gameProps/AccesCard.tscn" id="14_7xbmv"]
+[ext_resource type="PackedScene" uid="uid://dw0oonvocy1x7" path="res://scenes/gameProps/AccesCard.tscn" id="14_7xbmv"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xcjtm"]
 
@@ -13983,14 +13983,11 @@ size = Vector2(181, 187)
 script = ExtResource("1_gwa3o")
 
 [node name="PauseLayer" parent="." instance=ExtResource("3_yfm00")]
-visible = false
 
 [node name="GameUi" parent="." instance=ExtResource("3_ckmwj")]
 process_mode = 3
-visible = false
 
 [node name="GunDrop" parent="." instance=ExtResource("5_jugbl")]
-visible = false
 position = Vector2(564, 240)
 scale = Vector2(0.305, 0.305)
 
@@ -14007,7 +14004,6 @@ layer_2/name = "deco"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 position = Vector2(97, 186)
 scale = Vector2(1.14, 1.14)
 color = Color(0.870588, 0.913725, 0.858824, 1)
@@ -14038,13 +14034,11 @@ rotation = 5.24122
 shadow_enabled = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-visible = false
 position = Vector2(497, 87)
 shadow_enabled = true
 texture = ExtResource("10_1lrmq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 zoom = Vector2(9.255, 9.255)
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
@@ -14070,6 +14064,7 @@ position = Vector2(34, -5)
 position = Vector2(-172, -8)
 
 [node name="Path2D" type="Path2D" parent="."]
+visible = false
 position = Vector2(43, 215.83)
 scale = Vector2(0.929688, 0.943396)
 curve = SubResource("Curve2D_ksvbk")
