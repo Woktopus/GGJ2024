@@ -13,7 +13,7 @@
 [ext_resource type="Shader" path="res://scenes/gameplay/level/level_1.gdshader" id="11_wbkv2"]
 [ext_resource type="Texture2D" uid="uid://cbneotupgw5av" path="res://assets/temp_assets/player_temp.png" id="12_h3anm"]
 [ext_resource type="AudioStream" uid="uid://dtulht4grwft4" path="res://assets/sound/80s-retro-synthwave-186631.mp3" id="13_nhi8n"]
-[ext_resource type="PackedScene" uid="uid://dw0oonvocy1x7" path="res://scenes/gameProps/AccesCard.tscn" id="14_7xbmv"]
+[ext_resource type="PackedScene" path="res://scenes/gameProps/AccesCard.tscn" id="14_7xbmv"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xcjtm"]
 
@@ -13972,7 +13972,7 @@ shader_parameter/fisheye_strength = 1.0
 
 [sub_resource type="Curve2D" id="Curve2D_ksvbk"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 2, 0, 0, 0, 0, 128, 50, 0, 0, 0, 0, 113, -34, 0, 0, 0, 0, 70, -43, 0, 0, 0, 0, 74, -109, 0, 0, 0, 0, 5, -101, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 2, 0, 0, 0, 0, 128, 50, 0, 0, 0, 0, 113, -34, 0, 0, 0, 0, 70, -43, 0, 0, 0, 0, 73.1428, -98.3998, 0, 0, 0, 0, 5, -101, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
 
@@ -14067,7 +14067,6 @@ position = Vector2(34, -5)
 position = Vector2(-172, -8)
 
 [node name="Path2D" type="Path2D" parent="."]
-visible = false
 position = Vector2(43, 215.83)
 scale = Vector2(0.929688, 0.943396)
 curve = SubResource("Curve2D_ksvbk")
