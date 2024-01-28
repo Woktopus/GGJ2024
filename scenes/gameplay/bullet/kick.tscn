@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://2muex3yslqv8"]
+
+[ext_resource type="Texture2D" uid="uid://by40qdk4huhuh" path="res://assets/sprites/bullet/kick.png" id="1_vqopo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvyas"]
+size = Vector2(63, 23)
+
+[node name="Kick" type="Area2D"]
+z_index = 5
+scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+texture = ExtResource("1_vqopo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 7.5)
+shape = SubResource("RectangleShape2D_tvyas")
